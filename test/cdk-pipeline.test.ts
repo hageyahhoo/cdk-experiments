@@ -17,4 +17,13 @@ test('CodeCommit Repository Created', () => {
   template.hasResourceProperties('AWS::CodePipeline::Pipeline', {
     Name: 'LambdaExperimentsPipeline',
   });
+
+  template.hasResourceProperties('AWS::CodeBuild::ReportGroup', {
+    Name: 'TestReportGroup',
+    Type: 'TEST',
+  });
+  template.hasResourceProperties('AWS::CodeBuild::ReportGroup', {
+    Name: 'CoverageReportGroup',
+    Type: 'CODE_COVERAGE',
+  });
 });

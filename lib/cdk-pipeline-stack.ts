@@ -69,7 +69,7 @@ export class CdkPipelineStack extends cdk.Stack {
         'go test -v 2>&1 ./... | go-junit-report -set-exit-code > ${TEST_RESULTS}/go-test-report.xml',
         // Coverage
         'go test ./... -coverprofile=coverage.txt -covermode count github.com/gorilla/mux',
-        'gocover-cobertura < coverage.txt > ${TEST_RESUTS}/coverage.xml',
+        'gocover-cobertura < coverage.txt > ${TEST_RESULTS}/coverage.xml',
       ],
       partialBuildSpec: BuildSpec.fromObject({
         version: '0.2',
@@ -81,7 +81,7 @@ export class CdkPipelineStack extends cdk.Stack {
           },
           [coverageReportGroup.reportGroupArn]: {
             files: 'coverage.xml',
-            'file-format': 'COVERTURAXML',
+            'file-format': 'COBERTURAXML',
             'base-directory': `${reportDir}`,
           },
         }
